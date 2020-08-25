@@ -11,6 +11,7 @@ using Microsoft.Extensions.Hosting;
 using SignalRChat.Hubs;
 using Microsoft.EntityFrameworkCore;
 using SignalRChat.Data;
+using SignalRChatDBCon;
 
 namespace SignalRChat
 {
@@ -32,8 +33,11 @@ namespace SignalRChat
             //services.AddDbContext<SignalRChatContext>(options =>
             //        options.UseSqlServer(Configuration.GetConnectionString("SignalRChatContext")));
 
+            //services.AddDbContext<SignalRChatContext>(options =>
+            //    options.UseSqlServer(@"Server=localhost;Database=SignalRChatDB;Trusted_Connection=True;"));
+            DbCon Connection = new DbCon();
             services.AddDbContext<SignalRChatContext>(options =>
-                options.UseSqlServer(@"Server=localhost;Database=SignalRChatDB;Trusted_Connection=True;"));
+                options.UseSqlServer(Connection.Connection));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
