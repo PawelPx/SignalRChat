@@ -27,7 +27,7 @@ namespace SignalRChat.Hubs
             {
                 var time = DateTime.Now;
                 var timeString = time.ToString("HH:mm dd/MM/yyyy");
-                await Clients.All.SendAsync("ReceiveMessage", user, message,timeString);
+                await Clients.All.SendAsync("ReceiveMessage", user, message, timeString);
 
                 var context = scope.ServiceProvider.GetRequiredService<SignalRChatContext>();
                 Message.User = user;
