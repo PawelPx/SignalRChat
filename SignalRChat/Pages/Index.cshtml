@@ -1,27 +1,20 @@
 ﻿@page
+@model SignalRChat.Pages.IndexModel
+
+@{
+    ViewData["Title"] = "Login";
+}
 <div class="container">
-    <div class="row">
-        <div class="col-2">User</div>
-        <div class="col-4"><input type="text" id="userInput" /></div>
-    </div>
-    <div class="row">&nbsp;</div>
-    <div class="row">
-        <div class="col-1"></div>
-        <div class="col-6">
-            <textarea id="messagesList" rows="20" cols="80" style="resize: none" readonly></textarea>
+    <form method="post">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="row">
+            <div class="col-2">Choose username</div>
+            <div class="col-4"><input asp-for="AppUser.Username" type="text" id="userInput" class="form-control" /></div>
+            <span asp-validation-for="AppUser.Username" class="text-danger"></span>
         </div>
-    </div>
-    <div class="row">&nbsp;</div>
-    <div class="row">
-        <div class="col-1">Message</div>
-        <div class="col-7"><input type="text" id="messageInput" size="77" /></div>
-        <div class="col-1"><input type="button" id="sendButton" value="Send Message" /></div>
-    </div>
+        <div class="row">&nbsp;</div>
+        <div class="row">
+            <div class="col-1"><input type="submit" class="btn btn-primary" /></div>
+        </div>
+    </form>
 </div>
-<div class="row">
-    <div class="col-12">
-        <hr />
-    </div>
-</div>
-<script src="~/js/signalr/dist/browser/signalr.js"></script>
-<script src="~/js/chat.js"></script>
