@@ -26,26 +26,29 @@ namespace SignalRChat.Hubs
         [BindProperty]
         public Message Message { get; set; } = new Message();
 
+        // Method for sending messages
         public async Task SendMessage(string user, string message, string receiver)
         {
             using (var scope = _sp.CreateScope())
             {
                 var time = DateTime.Now;
                 var timeString = time.ToString("HH:mm dd/MM/yyyy");
+
+                // receiver equal null means message to all; else it's direct message
                 if (receiver == null)
                 {
-                    await Clients.All.SendAsync("ReceiveMessage", user, message, timeString, false);
+                    await Clients.All.SendAsync("ReceiveMessage", user, message, timeString, false, receiver);
                 }
                 else
                 {
-                    await Clients.Client(_userInMemory.GetUserInfo(receiver).ConnectionId).SendAsync("ReceiveMessage", user, message, timeString, true);
-                    await Clients.Caller.SendAsync("ReceiveMessage", user, message, timeString, true);
+                    await Clients.Client(_userInMemory.GetUserInfo(receiver).ConnectionId).SendAsync("ReceiveMessage", user, message, timeString, true, receiver);
+                    await Clients.Caller.SendAsync("ReceiveMessage", user, message, timeString, true, receiver);
                 }
                 await SaveToDb(scope, user, message, time);
             }
         }
 
-
+        // Method saving messages to database
         private async Task SaveToDb(IServiceScope scope, string user, string message, DateTime time)
         {
             var context = scope.ServiceProvider.GetRequiredService<SignalRChatContext>();
@@ -56,11 +59,17 @@ namespace SignalRChat.Hubs
             await context.SaveChangesAsync();
         }
 
+        // Joining the chat, activated after username is established and adds you to the users' list
         public async Task Join(string user)
         {
             _userInMemory.AddUpdate(user, Context.ConnectionId);
             await Clients.Others.SendAsync("AppendToUserList", user);
         }
 
+        // Method creates a private chat you and chosen user on that user's side
+        public async Task CreateChatToOtherUser(string receiver, string user)
+        {
+            await Clients.Client(_userInMemory.GetUserInfo(receiver).ConnectionId).SendAsync("StartDirectChat", user);
+        }
     }
 }
