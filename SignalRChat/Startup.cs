@@ -38,6 +38,8 @@ namespace SignalRChat
             DbCon Connection = new DbCon();
             services.AddDbContext<SignalRChatContext>(options =>
                 options.UseSqlServer(Connection.Connection));
+
+            services.AddSingleton<UserInMemory>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

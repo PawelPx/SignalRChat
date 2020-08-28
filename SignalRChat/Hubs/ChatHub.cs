@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SignalR;
@@ -25,29 +26,25 @@ namespace SignalRChat.Hubs
         [BindProperty]
         public Message Message { get; set; } = new Message();
 
-        public async Task SendMessage(string user, string message)
+        public async Task SendMessage(string user, string message, string receiver)
         {
             using (var scope = _sp.CreateScope())
             {
                 var time = DateTime.Now;
                 var timeString = time.ToString("HH:mm dd/MM/yyyy");
-                await Clients.All.SendAsync("ReceiveMessage", user, message, timeString);
+                if (receiver == null)
+                {
+                    await Clients.All.SendAsync("ReceiveMessage", user, message, timeString, false);
+                }
+                else
+                {
+                    await Clients.Client(_userInMemory.GetUserInfo(receiver).ConnectionId).SendAsync("ReceiveMessage", user, message, timeString, true);
+                    await Clients.Caller.SendAsync("ReceiveMessage", user, message, timeString, true);
+                }
                 await SaveToDb(scope, user, message, time);
             }
         }
 
-        public async Task SendDirectMessage(string user, string message, string connectionId)
-        {
-            using (var scope = _sp.CreateScope())
-            {
-                var time = DateTime.Now;
-                var timeString = time.ToString("HH:mm dd/MM/yyyy");
-                await Clients.Client(connectionId).SendAsync("ReceiveMessage", user, message, timeString);
-                await Clients.Caller.SendAsync("ReceiveMessage", user, message, timeString);
-                await SaveToDb(scope, user, message, time);
-                
-            }
-        }
 
         private async Task SaveToDb(IServiceScope scope, string user, string message, DateTime time)
         {
@@ -59,16 +56,11 @@ namespace SignalRChat.Hubs
             await context.SaveChangesAsync();
         }
 
-
-        public async Task AppendToUserList()
+        public async Task Join(string user)
         {
-            await Clients.All.SendAsync("AppendToUserList", Context.ConnectionId);
-
-            //using (var scope = _sp.CreateScope())
-            //{
-            //    var context = scope.ServiceProvider.GetRequiredService<SignalRChatContext>();
-            //    await Clients.All.SendAsync("AppendToUserList", context.AppUser.Username);
-            //}
+            _userInMemory.AddUpdate(user, Context.ConnectionId);
+            await Clients.Others.SendAsync("AppendToUserList", user);
         }
+
     }
 }

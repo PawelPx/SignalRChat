@@ -1,20 +1,39 @@
 ﻿@page
-@model SignalRChat.Pages.IndexModel
-
-@{
-    ViewData["Title"] = "Login";
-}
 <div class="container">
-    <form method="post">
-        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-        <div class="row">
-            <div class="col-2">Choose username</div>
-            <div class="col-4"><input asp-for="AppUser.Username" type="text" id="userInput" class="form-control" /></div>
-            <span asp-validation-for="AppUser.Username" class="text-danger"></span>
+    <div class="row">
+        <div class="col-1">User</div>
+        <div class="col-2"><input type="text" id="userInput" /></div>
+        <div class="col-3"><input type="button" id="setUserButton" value="Set" /></div>
+        <div class="col-1">Receiver</div>
+        <div class="col-2"><input type="text" id="receiverInput" /></div>
+        <div class="col-1"><input type="button" id="sendDirectMessageButton" value="Send Message" /></div>
+    </div>
+    <div class="row">&nbsp;</div>
+    <div class="row">
+        <div class="col-1"></div>
+        <div class="col-7">
+            <textarea id="messagesList" rows="20" cols="80" style="resize: none" readonly></textarea>
         </div>
-        <div class="row">&nbsp;</div>
-        <div class="row">
-            <div class="col-1"><input type="submit" class="btn btn-primary" /></div>
+        <div class="col-1">
+            <textarea id="usersList" rows="20" cols="40" style="resize: none" readonly></textarea>
         </div>
-    </form>
+    </div>
+    <div class="row">&nbsp;</div>
+    <div class="row">
+        <div class="col-1">Message</div>
+        <div class="col-7"><input type="text" id="messageInput" size="77" /></div>
+        <div class="col-1"><input type="button" id="sendButton" value="Send Message" /></div>
+    </div>
 </div>
+<div class="row">&nbsp;</div>
+<div class="col-2">Direct Messages</div>
+<div class="col-7">
+    <textarea id="directMessagesList" rows="20" cols="80" style="resize: none" readonly></textarea>
+</div>
+<div class="row">
+    <div class="col-12">
+        <hr />
+    </div>
+</div>
+<script src="~/js/signalr/dist/browser/signalr.js"></script>
+<script src="~/js/chat.js"></script>

@@ -14,27 +14,15 @@ namespace SignalRChat.Pages
     public class IndexModel : PageModel
     {
         private readonly ILogger<IndexModel> _logger;
-        private UserInMemory _userInMemory;
 
-        public IndexModel(ILogger<IndexModel> logger, UserInMemory userInMemory)
+        public IndexModel(ILogger<IndexModel> logger)
         {
             _logger = logger;
-            _userInMemory = userInMemory;
         }
-
-
-        [BindProperty]
-        public AppUser AppUser { get; set; }
 
         public void OnGet()
         {
-            
-        }
 
-        public async Task<IActionResult> OnPostAsync()
-        {
-            _userInMemory.AddUpdate(AppUser.Username, null);
-            return RedirectToPage("./Chat");
         }
     }
 }
