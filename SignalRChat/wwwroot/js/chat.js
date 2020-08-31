@@ -76,9 +76,7 @@ connection.on("AppendToUserList", function (user) {
         connection.invoke("CreateChatToOtherUser", user, userInput.value).catch(function (err) {
             return console.error(err.toString());
         });
-        var label = document.createElement("label");
-        label.innerHTML = user;
-        document.getElementById("div1").appendChild(label);
+        StartDirectChatLabel(user);
         StartDirectChat(user);
     });
     li.appendChild(a);
@@ -105,6 +103,8 @@ connection.on("StartDirectChat", function (user) {
 
 // Creates label with username of person how started private chat
 function StartDirectChatLabel(receiver) {
+    var br = document.createElement("br");
+    document.getElementById("div1").appendChild(br);
     var label = document.createElement("label");
     label.innerHTML = receiver;
     document.getElementById("div1").appendChild(label);
