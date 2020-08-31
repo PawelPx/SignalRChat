@@ -170,3 +170,4 @@ C:\Users\pasajewi\source\repos\SignalRChat\SignalRChat\bin\Debug\netcoreapp3.1\S
 C:\Users\pasajewi\source\repos\SignalRChat\SignalRChat\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.1\System.Data.SqlClient.dll
 C:\Users\pasajewi\source\repos\SignalRChat\SignalRChat\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll
 C:\Users\pasajewi\source\repos\SignalRChat\SignalRChat\obj\Debug\netcoreapp3.1\SignalRChat.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\pasajewi\source\repos\SignalRChat\SignalRChat\obj\Debug\netcoreapp3.1\Razor\Pages\Chat.cshtml.g.cs

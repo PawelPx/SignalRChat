@@ -15,5 +15,7 @@ namespace SignalRChat.Data
         }
 
         public DbSet<SignalRChat.Models.Message> Message { get; set; }
+        public AppUser AppUser { get; set; } = new AppUser();
+
     }
 }

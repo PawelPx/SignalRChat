@@ -1,0 +1,33 @@
+﻿@page
+<div class="container">
+    <div class="row">
+        <div class="col-2">User</div>
+        <div class="col-3"><input type="text" id="userInput" /></div>
+        <div class="col-1">Receiver</div>
+        <div class="col-2"><input type="text" id="receiverInput" /></div>
+        <div class="col-1"><input type="button" id="sendDirectMessageButton" value="Send Message" /></div>
+    </div>
+    <div class="row">&nbsp;</div>
+    <div class="row">
+        <div class="col-1"></div>
+        <div class="col-7">
+            <textarea id="messagesList" rows="20" cols="80" style="resize: none" readonly></textarea>
+        </div>
+        <div class="col-1">
+            <textarea id="usersList" rows="20" cols="40" style="resize: none" readonly></textarea>
+        </div>
+    </div>
+    <div class="row">&nbsp;</div>
+    <div class="row">
+        <div class="col-1">Message</div>
+        <div class="col-7"><input type="text" id="messageInput" size="77" /></div>
+        <div class="col-1"><input type="button" id="sendButton" value="Send Message" /></div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-12">
+        <hr />
+    </div>
+</div>
+<script src="~/js/signalr/dist/browser/signalr.js"></script>
+<script src="~/js/chat.js"></script>

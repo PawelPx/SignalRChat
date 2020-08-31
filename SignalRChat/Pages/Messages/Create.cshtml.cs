@@ -35,5 +35,19 @@ namespace SignalRChat.Pages.Messages
             _context.Message.Add(Message);
             await _context.SaveChangesAsync();
         }
+
+
+        //public async Task<IActionResult> OnPostAsync()
+        //{
+        //    if (!ModelState.IsValid)
+        //    {
+        //        return Page();
+        //    }
+
+        //    _context.Message.Add(Message);
+        //    await _context.SaveChangesAsync();
+
+        //    return RedirectToPage("./Index");
+        //}
     }
 }
