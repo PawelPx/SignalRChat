@@ -59,29 +59,44 @@ sendButton.addEventListener("click", function (event) {
 });
 
 // Listener for enter key
+userInput.addEventListener("keyup", function (event) {
+    if (event.keyCode === 13) {
+        setUserButton.click();
+    }
+});
+
+// Listener for enter key
 messageInput.addEventListener("keyup", function (event) {
     if (event.keyCode === 13) {
         sendButton.click();
     }
 });
 
+// Clear users' list;
+connection.on("ClearUserList", function (user) {
+    usersList.innerHTML = "";
+});
+
 // Appends user to the users' list;
 connection.on("AppendToUserList", function (user) {
-    var li = document.createElement("li");
-    var a = document.createElement("a");
-    var link = document.createTextNode(user);
-    a.appendChild(link);
-    a.href = "#";
+    if (user !== userInput.value) {
+        var li = document.createElement("li");
+        var a = document.createElement("a");
+        var link = document.createTextNode(user);
+        a.appendChild(link);
+        a.href = "#";
 
-    // Clicking on the users on list opens a private chat with them
-    a.addEventListener('click', function () {
-        connection.invoke("CreateChatToOtherUser", user, userInput.value).catch(function (err) {
-            return console.error(err.toString());
-        });
-        StartDirectChat(user);
-    });
-    li.appendChild(a);
-    usersList.appendChild(li);
+        // Clicking on the users on list opens a private chat with them
+        a.addEventListener('click',
+            function() {
+                connection.invoke("CreateChatToOtherUser", user, userInput.value).catch(function(err) {
+                    return console.error(err.toString());
+                });
+                StartDirectChat(user);
+            });
+        li.appendChild(a);
+        usersList.appendChild(li);
+    }
 });
 
 // Sets your username and adds you to users' list

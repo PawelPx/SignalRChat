@@ -65,8 +65,13 @@ namespace SignalRChat.Hubs
         // Joining the chat, activated after username is established and adds you to the users' list
         public async Task Join(string user)
         {
+            // Adds you to users' list and update it for all users
             _userInMemory.AddUpdate(user, Context.ConnectionId);
-            await Clients.Others.SendAsync("AppendToUserList", user);
+            await Clients.All.SendAsync("ClearUserList", user);
+            foreach (var item in _userInMemory.GetAllUsers())
+            {
+                await Clients.All.SendAsync("AppendToUserList", item.Username);
+            }
 
             // Load previous messages stored in Database (only messages sent to everyone)
             using (var scope = _sp.CreateScope())

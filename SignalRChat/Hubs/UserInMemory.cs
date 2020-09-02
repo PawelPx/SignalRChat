@@ -32,9 +32,9 @@ namespace SignalRChat.Hubs
             _onlineUser.TryRemove(name, out appUser);
         }
 
-        public IEnumerable<AppUser> GetAllUsersExceptThis(string username)
+        public IEnumerable<AppUser> GetAllUsers()
         {
-            return _onlineUser.Values.Where(item => item.Username != username);
+            return _onlineUser.Values;
         }
 
         public AppUser GetUserInfo(string username)
