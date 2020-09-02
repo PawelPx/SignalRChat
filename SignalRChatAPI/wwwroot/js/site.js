@@ -12,10 +12,12 @@ function getItems() {
 function addItem() {
     const addUserTextBox = document.getElementById('add-user');
     const addTextTextBox = document.getElementById('add-text');
+    const addReceiverTextBox = document.getElementById('add-receiver');
 
     const item = {
         user: addUserTextBox.value.trim(),
-        text: addTextTextBox.value.trim()
+        text: addTextTextBox.value.trim(),
+        receiver: addReceiverTextBox.value.trim()
     };
 
     fetch(uri, {
@@ -31,6 +33,7 @@ function addItem() {
             getItems();
             addUserTextBox.value = '';
             addTextTextBox.value = '';
+            addReceiverTextBox.value = '';
         })
         .catch(error => console.error('Unable to add item.', error));
 }
@@ -51,6 +54,7 @@ function displayEditForm(id) {
     document.getElementById('edit-id').value = item.id;
     document.getElementById('edit-user').value = item.user;
     document.getElementById('edit-text').value = item.text;
+    document.getElementById('edit-receiver').value = item.receiver;
     document.getElementById('editForm').style.display = 'block';
 }
 
@@ -60,7 +64,8 @@ function updateItem() {
         id: parseInt(itemId, 10),
         user: document.getElementById('edit-user').value.trim(),
         text: document.getElementById('edit-text').value.trim(),
-        sendDate: temp
+        sendDate: temp,
+        receiver: document.getElementById('edit-receiver').value.trim()
     };
 
     fetch(`${uri}/${itemId}`, {
@@ -141,10 +146,14 @@ function _displayItems(data) {
         td3.appendChild(textNode3);
 
         let td4 = tr.insertCell(3);
-        td4.appendChild(editButton);
+        let textNode4 = document.createTextNode(item.receiver);
+        td4.appendChild(textNode4);
 
         let td5 = tr.insertCell(4);
-        td5.appendChild(deleteButton);
+        td5.appendChild(editButton);
+
+        let td6 = tr.insertCell(5);
+        td6.appendChild(deleteButton);
     });
 
     messages = data;

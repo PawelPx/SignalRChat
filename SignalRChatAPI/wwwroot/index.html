@@ -11,6 +11,7 @@
 <form action="javascript:void(0);" method="POST" onsubmit="addItem()">
     <input type="text" id="add-user" placeholder="User">
     <input type="text" id="add-text" placeholder="Text">
+    <input type="text" id="add-receiver" placeholder="Receiver">
     <input type="submit" value="Add">
 </form>
 
@@ -20,6 +21,7 @@
         <input type="hidden" id="edit-id">
         <input type="text" id="edit-user">
         <input type="text" id="edit-text">
+        <input type="text" id="edit-receiver">
         <input type="submit" value="Save">
         <a onclick="closeInput()" aria-label="Close">&#10006;</a>
     </form>
@@ -32,7 +34,7 @@
         <th>User</th>
         <th>Text</th>
         <th>Date</th>
-        <th></th>
+        <th>Receiver</th>
     </tr>
     <tbody id="messages"></tbody>
 </table>

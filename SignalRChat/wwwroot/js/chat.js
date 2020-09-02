@@ -33,13 +33,16 @@ connection.on("ReceiveMessage", function (user, message, time, isDirect, receive
     var encodedMsg = user + " says: " + msg + '\r\n' + interval + time + '\r\n';
     if (isDirect) {
         // Usernames are used in Id of private chats, so distinction depending on how sent message
-        if (user == userInput.value) {
+        if (user === userInput.value) {
             document.getElementById("directMessagesList" + receiver).value += encodedMsg;
+            document.getElementById("directMessagesList" + receiver).scrollTop = document.getElementById("directMessagesList" + receiver).scrollHeight;
         } else {
             document.getElementById("directMessagesList" + user).value += encodedMsg;
+            document.getElementById("directMessagesList" + user).scrollTop = document.getElementById("directMessagesList" + user).scrollHeight;
         }
     } else {
         messagesList.value += encodedMsg;
+        messagesList.scrollTop = messagesList.scrollHeight;
     }
 });
 
@@ -52,7 +55,6 @@ sendButton.addEventListener("click", function (event) {
         return console.error(err.toString());
     });
     messageInput.value = "";
-    messagesList.scrollTop = messagesList.scrollHeight;
     event.preventDefault();
 });
 
@@ -76,7 +78,6 @@ connection.on("AppendToUserList", function (user) {
         connection.invoke("CreateChatToOtherUser", user, userInput.value).catch(function (err) {
             return console.error(err.toString());
         });
-        StartDirectChatLabel(user);
         StartDirectChat(user);
     });
     li.appendChild(a);
@@ -97,23 +98,20 @@ setUserButton.addEventListener("click", function (event) {
 
 // Creates a private chat on other user's request
 connection.on("StartDirectChat", function (user) {
-    StartDirectChatLabel(user);
     StartDirectChat(user);
 });
 
-// Creates label with username of person how started private chat
-function StartDirectChatLabel(receiver) {
-    var br = document.createElement("br");
-    document.getElementById("div1").appendChild(br);
-    var label = document.createElement("label");
-    label.innerHTML = receiver;
-    document.getElementById("div1").appendChild(label);
-}
 
 // Creates a private chat
 function StartDirectChat(receiver) {
     var br = document.createElement("br");
     document.getElementById("div1").appendChild(br);
+    var label = document.createElement("label");
+    label.innerHTML = receiver;
+    document.getElementById("div1").appendChild(label);
+
+    var br2 = document.createElement("br");
+    document.getElementById("div1").appendChild(br2);
 
     var textarea = document.createElement("textarea");
     textarea.id = "directMessagesList" + receiver;
@@ -142,9 +140,13 @@ function StartDirectChat(receiver) {
             return console.error(err.toString());
         });
         document.getElementById("messagesInput" + receiver).value = "";
-        document.getElementById("messagesList" + receiver).scrollTop = document.getElementById("messagesList" + receiver).scrollHeight;
         event.preventDefault();
     });
     document.getElementById("div1").appendChild(button);
+
+    // Load previous messages, from certain private chat, stored in Database
+    connection.invoke("LoadPrivateMessages", userInput.value, receiver).catch(function (err) {
+        return console.error(err.toString());
+    });
 }
 

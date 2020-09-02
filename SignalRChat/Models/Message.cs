@@ -14,5 +14,6 @@ namespace SignalRChat.Models
 
         [DataType(DataType.Date)]
         public DateTime SendDate { get; set; }
+        public string Receiver { get; set; }
     }
 }

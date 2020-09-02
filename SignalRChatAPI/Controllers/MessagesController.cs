@@ -53,6 +53,10 @@ namespace SignalRChatAPI
                 return BadRequest();
             }
 
+            if (message.Receiver == "")
+            {
+                message.Receiver = null;
+            }
             _context.Entry(message).State = EntityState.Modified;
 
             try
@@ -81,6 +85,10 @@ namespace SignalRChatAPI
         public async Task<ActionResult<Message>> PostMessage(Message message)
         {
             message.SendDate = DateTime.Now;
+            if (message.Receiver == "")
+            {
+                message.Receiver = null;
+            }
             _context.Message.Add(message);
             await _context.SaveChangesAsync();
 
