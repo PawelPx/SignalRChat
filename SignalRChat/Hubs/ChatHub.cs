@@ -46,6 +46,7 @@ namespace SignalRChat.Hubs
                     await Clients.Client(_userInMemory.GetUserInfo(receiver).ConnectionId).SendAsync("ReceiveMessage", user, message, timeString, true, receiver);
                     await Clients.Caller.SendAsync("ReceiveMessage", user, message, timeString, true, receiver);
                 }
+
                 await SaveToDb(scope, user, message, time, receiver);
             }
         }
