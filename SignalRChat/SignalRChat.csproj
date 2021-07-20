@@ -16,6 +16,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\SignalRChatDBCon\SignalRChatDBCon.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Reference Include="SignalRChatDBCon">
       <HintPath>..\..\SignalRChatTests\SignalRChatTests\bin\Debug\netcoreapp3.1\SignalRChatDBCon.dll</HintPath>
     </Reference>

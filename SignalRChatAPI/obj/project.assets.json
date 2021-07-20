@@ -8980,8 +8980,8 @@
     },
     "SignalRChatDBCon/1.0.0": {
       "type": "project",
-      "path": "../../SignalRChatDBCon/SignalRChatDBCon/SignalRChatDBCon.csproj",
-      "msbuildProject": "../../SignalRChatDBCon/SignalRChatDBCon/SignalRChatDBCon.csproj"
+      "path": "../SignalRChatDBCon/SignalRChatDBCon.csproj",
+      "msbuildProject": "../SignalRChatDBCon/SignalRChatDBCon.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -8991,23 +8991,29 @@
       "Microsoft.EntityFrameworkCore.Sqlite >= 3.1.7",
       "Microsoft.EntityFrameworkCore.Tools >= 3.1.7",
       "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 3.1.4",
-      "SignalRChatDBCon >= 1.0.0"
+      "SignalRChatDBCon >= 1.0.0",
+      "System.Data.SqlClient >= 4.8.2"
     ]
   },
   "packageFolders": {
-    "C:\\Users\\pasajewi\\.nuget\\packages\\": {}
+    "C:\\Users\\Pawel\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\pasajewi\\source\\repos\\SignalRChat\\SignalRChatAPI\\SignalRChatAPI.csproj",
+      "projectUniqueName": "C:\\Users\\Pawel\\source\\repos\\SignalRChat\\SignalRChatAPI\\SignalRChatAPI.csproj",
       "projectName": "SignalRChatAPI",
-      "projectPath": "C:\\Users\\pasajewi\\source\\repos\\SignalRChat\\SignalRChatAPI\\SignalRChatAPI.csproj",
-      "packagesPath": "C:\\Users\\pasajewi\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\pasajewi\\source\\repos\\SignalRChat\\SignalRChatAPI\\obj\\",
+      "projectPath": "C:\\Users\\Pawel\\source\\repos\\SignalRChat\\SignalRChatAPI\\SignalRChatAPI.csproj",
+      "packagesPath": "C:\\Users\\Pawel\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Pawel\\source\\repos\\SignalRChat\\SignalRChatAPI\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
       "configFilePaths": [
-        "C:\\Users\\pasajewi\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Pawel\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -9019,9 +9025,10 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
           "projectReferences": {
-            "C:\\Users\\pasajewi\\source\\repos\\SignalRChatDBCon\\SignalRChatDBCon\\SignalRChatDBCon.csproj": {
-              "projectPath": "C:\\Users\\pasajewi\\source\\repos\\SignalRChatDBCon\\SignalRChatDBCon\\SignalRChatDBCon.csproj"
+            "C:\\Users\\Pawel\\source\\repos\\SignalRChat\\SignalRChatDBCon\\SignalRChatDBCon.csproj": {
+              "projectPath": "C:\\Users\\Pawel\\source\\repos\\SignalRChat\\SignalRChatDBCon\\SignalRChatDBCon.csproj"
             }
           }
         }
@@ -9034,6 +9041,7 @@
     },
     "frameworks": {
       "netcoreapp3.1": {
+        "targetAlias": "netcoreapp3.1",
         "dependencies": {
           "Microsoft.EntityFrameworkCore.InMemory": {
             "target": "Package",
@@ -9056,6 +9064,10 @@
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
             "target": "Package",
             "version": "[3.1.4, )"
+          },
+          "System.Data.SqlClient": {
+            "target": "Package",
+            "version": "[4.8.2, )"
           }
         },
         "imports": [
@@ -9076,7 +9088,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.106\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.301\\RuntimeIdentifierGraph.json"
       }
     }
   }

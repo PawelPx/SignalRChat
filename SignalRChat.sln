@@ -5,11 +5,11 @@ VisualStudioVersion = 16.0.30308.118
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SignalRChat", "SignalRChat\SignalRChat.csproj", "{4C6D8976-1429-412A-AACE-8C07626E2299}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SignalRChatTests", "..\SignalRChatTests\SignalRChatTests\SignalRChatTests.csproj", "{90AE9BA1-07A7-4FF7-96A3-00FD01D825BF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SignalRChatAPI", "SignalRChatAPI\SignalRChatAPI.csproj", "{57F0DEF6-A5EC-4960-8182-F98B478B0C01}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SignalRChatDBCon", "..\SignalRChatDBCon\SignalRChatDBCon\SignalRChatDBCon.csproj", "{E619D852-9126-4CBD-A5F6-CCBAB00B22AE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SignalRChatDBCon", "SignalRChatDBCon\SignalRChatDBCon.csproj", "{0725AF72-66D4-4CE0-8003-2515CCA3F9EA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SignalRChatAPI", "SignalRChatAPI\SignalRChatAPI.csproj", "{57F0DEF6-A5EC-4960-8182-F98B478B0C01}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SignalRChatTests", "SignalRChatTests\SignalRChatTests.csproj", "{B27D3DB7-FCFA-4E07-89A0-988E0E5E35FF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,18 +21,18 @@ Global
 		{4C6D8976-1429-412A-AACE-8C07626E2299}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4C6D8976-1429-412A-AACE-8C07626E2299}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4C6D8976-1429-412A-AACE-8C07626E2299}.Release|Any CPU.Build.0 = Release|Any CPU
-		{90AE9BA1-07A7-4FF7-96A3-00FD01D825BF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{90AE9BA1-07A7-4FF7-96A3-00FD01D825BF}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{90AE9BA1-07A7-4FF7-96A3-00FD01D825BF}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{90AE9BA1-07A7-4FF7-96A3-00FD01D825BF}.Release|Any CPU.Build.0 = Release|Any CPU
-		{E619D852-9126-4CBD-A5F6-CCBAB00B22AE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E619D852-9126-4CBD-A5F6-CCBAB00B22AE}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E619D852-9126-4CBD-A5F6-CCBAB00B22AE}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E619D852-9126-4CBD-A5F6-CCBAB00B22AE}.Release|Any CPU.Build.0 = Release|Any CPU
 		{57F0DEF6-A5EC-4960-8182-F98B478B0C01}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{57F0DEF6-A5EC-4960-8182-F98B478B0C01}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{57F0DEF6-A5EC-4960-8182-F98B478B0C01}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{57F0DEF6-A5EC-4960-8182-F98B478B0C01}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0725AF72-66D4-4CE0-8003-2515CCA3F9EA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0725AF72-66D4-4CE0-8003-2515CCA3F9EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0725AF72-66D4-4CE0-8003-2515CCA3F9EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0725AF72-66D4-4CE0-8003-2515CCA3F9EA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B27D3DB7-FCFA-4E07-89A0-988E0E5E35FF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B27D3DB7-FCFA-4E07-89A0-988E0E5E35FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B27D3DB7-FCFA-4E07-89A0-988E0E5E35FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B27D3DB7-FCFA-4E07-89A0-988E0E5E35FF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

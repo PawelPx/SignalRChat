@@ -8,9 +8,16 @@
       "TRACE",
       "DEBUG",
       "NETCOREAPP",
-      "NETCOREAPP3_1"
+      "NETCOREAPP3_1",
+      "NETCOREAPP1_0_OR_GREATER",
+      "NETCOREAPP1_1_OR_GREATER",
+      "NETCOREAPP2_0_OR_GREATER",
+      "NETCOREAPP2_1_OR_GREATER",
+      "NETCOREAPP2_2_OR_GREATER",
+      "NETCOREAPP3_0_OR_GREATER",
+      "NETCOREAPP3_1_OR_GREATER"
     ],
-    "languageVersion": "",
+    "languageVersion": "8.0",
     "platform": "",
     "allowUnsafe": false,
     "warningsAsErrors": false,
@@ -30,7 +37,7 @@
           "Microsoft.EntityFrameworkCore.Tools": "3.1.7",
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": "3.1.4",
           "SignalRChatDBCon": "1.0.0",
-          "SignalRChatDBCon.Reference": "1.0.0.0",
+          "System.Data.SqlClient": "4.8.2",
           "Microsoft.AspNetCore.Antiforgery": "3.1.0.0",
           "Microsoft.AspNetCore.Authentication.Abstractions": "3.1.0.0",
           "Microsoft.AspNetCore.Authentication.Cookies": "3.1.0.0",
@@ -2427,12 +2434,12 @@
           "System.Xml.XmlDocument": "4.3.0"
         }
       },
-      "SignalRChatDBCon.Reference/1.0.0.0": {
+      "SignalRChatDBCon/1.0.0": {
+        "dependencies": {
+          "System.Data.SqlClient": "4.8.2"
+        },
         "runtime": {
-          "SignalRChatDBCon.dll": {
-            "assemblyVersion": "1.0.0.0",
-            "fileVersion": "1.0.0.0"
-          }
+          "SignalRChatDBCon.dll": {}
         },
         "compile": {
           "SignalRChatDBCon.dll": {}
@@ -4045,12 +4052,6 @@
           "WindowsBase.dll": {}
         },
         "compileOnly": true
-      },
-      "SignalRChatDBCon/1.0.0": {
-        "dependencies": {
-          "System.Data.SqlClient": "4.8.2"
-        },
-        "compileOnly": true
       }
     }
   },
@@ -5257,8 +5258,8 @@
       "path": "system.xml.xmlserializer/4.3.0",
       "hashPath": "system.xml.xmlserializer.4.3.0.nupkg.sha512"
     },
-    "SignalRChatDBCon.Reference/1.0.0.0": {
-      "type": "reference",
+    "SignalRChatDBCon/1.0.0": {
+      "type": "project",
       "serviceable": false,
       "sha512": ""
     },
@@ -6599,11 +6600,6 @@
     },
     "WindowsBase/4.0.0.0": {
       "type": "referenceassembly",
-      "serviceable": false,
-      "sha512": ""
-    },
-    "SignalRChatDBCon/1.0.0": {
-      "type": "project",
       "serviceable": false,
       "sha512": ""
     }
